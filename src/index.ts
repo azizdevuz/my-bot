@@ -6,7 +6,7 @@ import { development, production } from "./core";
 
 require("dotenv").config();
 
-const BOT_TOKEN = process.env.BOT_TOKEN || "6250377643:AAEzRDo_itX_9-oU_Soj-i22dHNk7Am3vi8";
+const BOT_TOKEN = process.env.BOT_TOKEN || "";
 const ENVIRONMENT = process.env.NODE_ENV || "";
 
 const bot = new Telegraf(BOT_TOKEN);
@@ -16,7 +16,8 @@ bot.on("message", greeting());
 
 //prod mode (Vercel)
 export const startVercel = async (req: VercelRequest, res: VercelResponse) => {
-  await production(req, res, bot);
+  let ress = await production(req, res, bot);
+  console.log(ress);
 };
 //dev mode
 ENVIRONMENT !== "production" && development(bot);
