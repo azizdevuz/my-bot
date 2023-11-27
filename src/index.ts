@@ -16,8 +16,7 @@ bot.on("message", greeting());
 
 //prod mode (Vercel)
 export const startVercel = async (req: VercelRequest, res: VercelResponse) => {
-  let ress = await production(req, res, bot);
-  console.log(ress);
+  await production(req, res, bot);
 };
 //dev mode
 ENVIRONMENT !== "production" && development(bot);
