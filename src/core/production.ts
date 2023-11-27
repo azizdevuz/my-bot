@@ -1,11 +1,9 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { get } from "http";
 import { Context, Telegraf } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
 
 require("dotenv").config();
 
-const PORT = (process.env.PORT && parseInt(process.env.PORT, 10)) || 3000;
 const VERCEL_URL = `${process.env.VERCEL_URL}`;
 
 const production = async (
@@ -24,10 +22,13 @@ const production = async (
   }
 
   if (req.method === "POST") {
-    await bot.handleUpdate((req.body as unknown) as Update, res);
+    let data = await bot.handleUpdate((req.body as unknown) as Update, res);
+    console.log(data);
+    res.status(200).json(data);
   } else {
     res.status(200).json({
       ok: true,
+      message: "Listening ...",
       url: VERCEL_URL,
       info: getWebhookInfo,
     });
