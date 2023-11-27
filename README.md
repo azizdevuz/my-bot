@@ -1,77 +1,38 @@
-# grammY Vercel boilerplate
+## Telegram Bot Template for [Vercel](https://vercel.com)
 
-[grammY](https://grammy.dev/) boilerplate to develop and host telegram bots on [Vercel](https://vercel.com/).
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPonomareVlad%2FTeleVercelBot&env=TELEGRAM_BOT_TOKEN&envDescription=Telegram%20Bot%20Token%20from%20%40BotFather&project-name=telegram-bot&repo-name=telegram-bot)
 
-## Features
+> Try [new experimental version for Edge Functions](https://github.com/PonomareVlad/TeleVercelEdgeBot) ✨
 
--   Typescript support
--   Linting and formatting preconfigured
--   Development friendly environment with Nodemon
+### Run locally
 
-## Development
+#### 1. Install [Vercel CLI](https://vercel.com/docs/cli)
 
 ```bash
-# Copy the .env example and change the BOT_TOKEN to match yours
-$ cp .env.example .env
-# Install the dependencies
-$ npm install
-# Run the development environment
-$ npm run dev
+npm i -g vercel
 ```
 
-## Deployment
+#### 2. Install [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) (`cloudflared`)
 
-#### Terminal
+[Download link](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
+
+#### 3. Then run local dev server with tunnel
 
 ```bash
-# Install vercel cli if you don't have it yet
-$ npm i -g vercel
-# Deploy the project
-$ vercel --prod
+npm run dev-with-tunnel
 ```
 
-#### Vercel
+And open link from terminal (ends with `*.trycloudflare.com`) to set WebHook
 
-On your project's page, go to Settings > Environment Variables and add the following variables:
+Now you can make some changes in [src/bot.mjs](src/bot.mjs)
 
-| Name        | Value            |
-| ----------- | ---------------- |
-| `BOT_TOKEN` | _your bot token_ |
+[Documentation for TeleBot](https://github.com/mullwar/telebot)
 
-> You can also set the webhook URL manually accessing `https://api.telegram.org/bot<bot_token>/setWebhook?url=<webhook_url>` on your browser
+### Template structure:
 
-Finally, you should see a "Hello, world!" from the bot when typing `/hello` in chat.
+- [api/telegram.mjs](api/telegram.mjs) — Endpoint function for WebHooks
+- [api/setWebhook.mjs](api/setWebhook.mjs) — Function for setting WebHook URL
 
-## Using Express instead of Vercel's API
+###### P.S. Don't forget to remove or restrict [api/setWebhook.mjs](api/setWebhook.mjs) function before going to production
 
-By default `grammy-vercel-boilerplate` does not use extra dependencies, but in case you want to use Express, first add it as a dependency
-
-```sh
-$ npm install express
-```
-
-And then edit the contents of `api/index.ts` to
-
-```js
-require("../src/index");
-
-import express from "express";
-import { webhookCallback } from "grammy";
-
-import bot from "../src/core/bot";
-
-const app = express();
-
-app.use(express.json());
-app.use(`/api/index`, webhookCallback(bot));
-
-export default app;
-```
-
-## Contributing
-
-Pull requests are welcome. If you have any suggestions, you can also create an [issue](https://github.com/neumanf/grammy-vercel-boilerplate/issues).
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+Made with 💜 by [Vladislav Ponomarev](https://GitHub.com/PonomareVlad)

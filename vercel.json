@@ -1,9 +1,10 @@
 {
-    "version": 2,
-    "routes": [
-        {
-            "src": "/.*",
-            "dest": "api/index.ts"
-        }
-    ]
+  "functions": {
+    "api/**": {
+      "includeFiles": "node_modules/telebot/plugins/**"
+    }
+  },
+  "github": {
+    "silent": true
+  }
 }
