@@ -1,10 +1,11 @@
 {
-  "functions": {
-    "api/**": {
-      "includeFiles": "node_modules/telebot/plugins/**"
+  "version": 2,
+  "public": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "api/index.ts"
     }
-  },
-  "github": {
-    "silent": true
-  }
+  ],
+  "redirects": [{ "source": "/", "destination": "/api", "permanent": false }]
 }

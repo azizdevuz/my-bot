@@ -1,18 +1,28 @@
 {
-  "name": "telebot-vercel-template",
-  "author": "Vladislav Ponomarev <PonomareVlad@users.noreply.github.com> (https://PonomareVlad.ru)",
-  "funding": "https://PonomareVlad.ru/donate",
-  "license": "MIT",
-  "scripts": {
-    "dev": "vc dev",
-    "dev-with-tunnel": "npm run tunnel & npm run dev",
-    "tunnel": "cloudflared tunnel --url http://localhost:3000"
-  },
+  "name": "telegram-bot",
+  "version": "1.1.0",
+  "description": "Telegram Bot Vercel Boilerplate",
+  "main": "src/index.ts",
+  "author": "Aziz Sobirov (https://azizdev.uz)",
   "dependencies": {
-    "telebot": "^1.4.1",
-    "telebot-vercel": "^1.0.1"
+    "@vercel/node": "^3.0.7",
+    "dotenv-cli": "^7.3.0",
+    "telegraf": "^4.15.0"
   },
-  "engines": {
-    "node": "^18.0.0"
+  "devDependencies": {
+    "@types/debug": "^4.1.10",
+    "@types/node": "^20.8.8",
+    "@vercel/ncc": "^0.38.1",
+    "debug": "^4.3.4",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "devWindows": "@powershell -Command $env:DEBUG='bot*';dotenv -- -- nodemon -e ts -x ts-node src/index.ts",
+    "build": "ncc build src/index.ts -o public -m",
+    "prettier": "prettier --write 'src/**/*.ts'"
   }
 }

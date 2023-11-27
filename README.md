@@ -1,38 +1,30 @@
-## Telegram Bot Template for [Vercel](https://vercel.com)
+# Telegram Bot Vercel Boilerplate
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPonomareVlad%2FTeleVercelBot&env=TELEGRAM_BOT_TOKEN&envDescription=Telegram%20Bot%20Token%20from%20%40BotFather&project-name=telegram-bot&repo-name=telegram-bot)
+Telegram Bot Vercel Boilerplate based on Node.js and [Telegraf](https://github.com/telegraf/telegraf) framework.
 
-> Try [new experimental version for Edge Functions](https://github.com/PonomareVlad/TeleVercelEdgeBot) ✨
+This template inspired by [Telegram Bot Boilerplate](https://github.com/yakovlevyuri/telegram-bot-boilerplate) for easily deploy to [Vercel](https://vercel.com).
 
-### Run locally
+[![Live Demo](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@7rodma/deploy-a-serverless-telegram-chatbot-using-vercel-57665d942a58)
 
-#### 1. Install [Vercel CLI](https://vercel.com/docs/cli)
+## Before you start
 
-```bash
-npm i -g vercel
+First rename `.env-sample` file to `.env` and fill in all necessary values.
+
+```
+BOT_TOKEN="<YOUR_BOT_API_TOKEN>"
 ```
 
-#### 2. Install [CloudFlare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) (`cloudflared`)
+## Start your server
 
-[Download link](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
-
-#### 3. Then run local dev server with tunnel
-
-```bash
-npm run dev-with-tunnel
+```
+npm install
+npm dev
 ```
 
-And open link from terminal (ends with `*.trycloudflare.com`) to set WebHook
+## Production
 
-Now you can make some changes in [src/bot.mjs](src/bot.mjs)
+You can fork this template and do the necessary changes you need. Then you when are done with your changes simply goto [vercel git import](https://vercel.com/import/git).
 
-[Documentation for TeleBot](https://github.com/mullwar/telebot)
+## Demo
 
-### Template structure:
-
-- [api/telegram.mjs](api/telegram.mjs) — Endpoint function for WebHooks
-- [api/setWebhook.mjs](api/setWebhook.mjs) — Function for setting WebHook URL
-
-###### P.S. Don't forget to remove or restrict [api/setWebhook.mjs](api/setWebhook.mjs) function before going to production
-
-Made with 💜 by [Vladislav Ponomarev](https://GitHub.com/PonomareVlad)
+You can see a working version of the bot at [@Node_api_m_bot](https://t.me/Node_api_m_bot)
