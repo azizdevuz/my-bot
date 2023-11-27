@@ -1,4 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import { get } from "http";
 import { Context, Telegraf } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
 
@@ -22,12 +23,14 @@ const production = async (
     await bot.telegram.setWebhook(`${VERCEL_URL}/api`);
   }
 
-  console.log(getWebhookInfo);
-
   if (req.method === "POST") {
     await bot.handleUpdate((req.body as unknown) as Update, res);
   } else {
-    res.status(200).json("Listening to bot events...");
+    res.status(200).json({
+      ok: true,
+      url: VERCEL_URL,
+      info: getWebhookInfo,
+    });
   }
 };
 export { production };
