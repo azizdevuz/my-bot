@@ -6,7 +6,7 @@ import { development, production } from "./core";
 
 require("dotenv").config();
 
-const BOT_TOKEN = process.env.BOT_TOKEN || "";
+const BOT_TOKEN = process.env.BOT_TOKEN || "6250377643:AAEzRDo_itX_9-oU_Soj-i22dHNk7Am3vi8";
 const ENVIRONMENT = process.env.NODE_ENV || "";
 
 const bot = new Telegraf(BOT_TOKEN);
