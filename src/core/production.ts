@@ -20,7 +20,6 @@ const production = async (
   if (getWebhookInfo.url !== VERCEL_URL + "/api") {
     await bot.telegram.deleteWebhook();
     await bot.telegram.setWebhook(`${VERCEL_URL}/api`);
-    console.log("Webhook set" + VERCEL_URL + "/api");
   }
 
   if (req.method === "POST") {
